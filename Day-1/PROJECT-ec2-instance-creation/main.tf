@@ -1,8 +1,11 @@
-provider "aws" {
-    region = "us-east-1"  # Set your desired AWS region
+provider "google" {
+  project     = "project_id"
+  region      = "us-central1"
 }
 
-resource "aws_instance" "example" {
-    ami           = "ami-0c55b159cbfafe1f0"  # Specify an appropriate AMI ID
-    instance_type = "t2.micro"
+resource "google_compute_instance" "example" {
+    name = "my_instance"
+    machine_type = "e2.micro"
+    provision = "spot"
+    zone = "us-central1-a"
 }
