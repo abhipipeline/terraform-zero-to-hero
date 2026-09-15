@@ -4,7 +4,7 @@ provider "google" {
 }
 
 resource "google_compute_instance" "example" {
-    name = "my_instance"
+    name = "my-instance"
     machine_type = "e2.micro"
     zone = "us-central1-a"
 
