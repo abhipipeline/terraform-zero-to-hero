@@ -13,7 +13,8 @@ resource "google_compute_instance" "example" {
 }
 boot_disk {
     initialize_params {
-      image = "debian-cloud/debian-11"
+      image_family = "debian-11"
+      image_project = "debian-cloud"
     }
   }
 scheduling {
