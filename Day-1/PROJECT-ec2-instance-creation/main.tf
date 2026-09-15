@@ -23,6 +23,7 @@ resource "google_compute_instance" "example" {
 
   scheduling {
     preemptible = true
+    automatic_restart = false
   }
 
   tags = ["http-server", "https-server"]
