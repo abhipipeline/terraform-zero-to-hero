@@ -1,23 +1,29 @@
 provider "google" {
-  project     = "project_id"
-  region      = "us-central1"
+  project = var.project_id
+  region  = var.region
 }
 
 resource "google_compute_instance" "example" {
-    name = "my-instance"
-    machine_type = "e2.micro"
-    zone = "us-central1-a"
+  name         = "my-instance"
+  machine_type = "e2-micro"
+  zone         = "us-central1-a"
 
-    network_interface {
-  network = "default"
-}
-boot_disk {
+  boot_disk {
     initialize_params {
-      image_family = "debian-11"
-      image_project = "debian-cloud"
+      image = "debian-11"
     }
   }
-scheduling {
-preemptible= true
-}
+
+  network_interface {
+    network = "default"
+    access_config {
+      # This allocates a public IP address
+    }
+  }
+
+  scheduling {
+    preemptible = true
+  }
+
+  tags = ["http-server", "https-server"]
 }
