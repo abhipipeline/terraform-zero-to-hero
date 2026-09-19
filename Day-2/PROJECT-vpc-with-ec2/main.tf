@@ -1,6 +1,3 @@
-provider "google" {
-  region = "us-central1"
-}
 # NETWORKING
 resource "google_compute_network" "vpc" {
   name = "custom_vpc"
@@ -50,5 +47,5 @@ resource "google_compute_instance" "default" {
 
   
 
-  metadata_startup_script = "echo hi > /test.txt"
+  metadata_startup_script = file("${path.module}/userdata.sh")
 }
