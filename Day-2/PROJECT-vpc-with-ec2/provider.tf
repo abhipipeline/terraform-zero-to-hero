@@ -11,4 +11,5 @@ provider "google" {
   # Configuration options
   project = var.projectid
   region = "us-central1"
+  zone = "us-central1-a"
 }
