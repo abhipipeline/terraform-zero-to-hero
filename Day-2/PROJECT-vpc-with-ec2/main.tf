@@ -12,6 +12,18 @@ resource "google_compute_subnetwork" "sub1" {
   region = "us-central1"
   network = google_compute_network.custom_vpc.id
 }
+resource "google_compute_firewall" "allow_web_and_ssh" {
+  name    = "allow-web-ssh"
+  network = google_compute_network.vpc.name
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22", "80", "443"]
+  }
+
+  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["VM-INSTANCE"]
+}
 
 
 # VM INSTANCE
