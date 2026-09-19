@@ -19,7 +19,7 @@ resource "google_compute_firewall" "allow_web_and_ssh" {
   }
 
   source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["VM-INSTANCE"]
+  target_tags   = ["vm-instance"]
 }
 
 
@@ -29,7 +29,7 @@ resource "google_compute_instance" "default" {
   machine_type = "e2-micro"
   zone         = "us-central1-a"
 
-  tags = ["VM-INSTANCE"]
+  tags = ["vm-instance"]
 
   boot_disk {
     initialize_params {
