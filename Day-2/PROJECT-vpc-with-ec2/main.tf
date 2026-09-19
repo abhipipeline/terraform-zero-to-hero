@@ -1,13 +1,13 @@
 # NETWORKING
 resource "google_compute_network" "vpc" {
-  name = "custom_vpc"
+  name = "custom-vpc"
   auto_create_subnetworks = false
 }
 resource "google_compute_subnetwork" "sub1" {
   name = "subnetwork1"
   ip_cidr_range = var.cidr
   region = "us-central1"
-  network = google_compute_network.custom_vpc.id
+  network = google_compute_network.vpc.id
 }
 resource "google_compute_firewall" "allow_web_and_ssh" {
   name    = "allow-web-ssh"
